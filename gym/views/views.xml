@@ -1,60 +1,48 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="gym.list">
-      <field name="name">gym list</field>
-      <field name="model">gym.gym</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
+    <data>
+        <!-- Vista de formulario -->
+        <record model="ir.ui.view" id="view_gym_session_form">
+            <field name="name">gym.session.form</field>
+            <field name="model">gym.session</field>
+            <field name="arch" type="xml">
+                <form string="Sesión de Gimnasio">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nombre de la sesión"/>
+                            <field name="start_time" string="Hora de inicio"/>
+                            <field name="end_time" string="Hora de fin"/>
+                            <field name="instructor_id" string="Instructor"/>
+                            <field name="capacity" string="Capacidad"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="gym.action_window">
-      <field name="name">gym window</field>
-      <field name="res_model">gym.gym</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+        <!-- Vista de lista -->
+        <record model="ir.ui.view" id="view_gym_session_tree">
+            <field name="name">gym.session.tree</field>
+            <field name="model">gym.session</field>
+            <field name="arch" type="xml">
+                <tree string="Sesiones de Gimnasio">
+                    <field name="name" string="Nombre de la sesión"/>
+                    <field name="start_time" string="Hora de inicio"/>
+                    <field name="end_time" string="Hora de fin"/>
+                    <field name="instructor_id" string="Instructor"/>
+                    <field name="capacity" string="Capacidad"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="gym.action_server">
-      <field name="name">gym server</field>
-      <field name="model_id" ref="model_gym_gym"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
+        <!-- Acción para abrir las vistas de gimnasio -->
+        <record model="ir.actions.act_window" id="action_gym_session">
+            <field name="name">Sesiones de Gimnasio</field>
+            <field name="res_model">gym.session</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="gym" id="gym.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="gym.menu_1" parent="gym.menu_root"/>
-    <menuitem name="Menu 2" id="gym.menu_2" parent="gym.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="gym.menu_1_list" parent="gym.menu_1"
-              action="gym.action_window"/>
-    <menuitem name="Server to list" id="gym" parent="gym.menu_2"
-              action="gym.action_server"/>
--->
-  </data>
+        <!-- Añadir un ítem de menú para acceder a las sesiones -->
+        <menuitem id="gym_menu" name="Gimnasio" sequence="10"/>
+        <menuitem id="gym_session_menu" name="Sesiones" parent="gym_menu" action="action_gym_session" sequence="10"/>
+    </data>
 </odoo>
