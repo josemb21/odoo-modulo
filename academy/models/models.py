@@ -1,19 +1,12 @@
- -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
- from odoo import models, fields, api
+from odoo import models, fields, api
 
+class AcademyCourse(models.Model):
+    _name = 'academy.course'
+    _description = 'Academy Course'
 
- class academy(models.Model):
-     _name = 'academy.academy'
-    _description = 'academy.academy'
-
-    name = fields.Char()
-    value = fields.Integer()
-    value2 = fields.Float(compute="_value_pc", store=True)
-     description = fields.Text()
-
-   @api.depends('value')
-     def _value_pc(self):
-        for record in self:
-           record.value2 = float(record.value) / 100
-
+    name = fields.Char(string="Course Name", required=True)
+    instructor = fields.Char(string="Instructor")
+    start_date = fields.Date(string="Start Date")
+    description = fields.Text(string="Description")
