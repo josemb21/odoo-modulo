@@ -1,19 +1,15 @@
-# -*- coding: utf-8 -*-
+from odoo import models, fields, api
 
-# from odoo import models, fields, api
+class ModuloApp(models.Model):
+    _name = 'modulo_app.modulo_app'
+    _description = 'ModuloApp'
 
+    # Definición de campos
+    name = fields.Char(string='Name')
+    value = fields.Integer(string='Value')
+    value2 = fields.Float(string='Value 2', compute='_value_pc', store=True)
 
-# class modulo_app(models.Model):
-#     _name = 'modulo_app.modulo_app'
-#     _description = 'modulo_app.modulo_app'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
-
+    @api.depends('value')
+    def _value_pc(self):
+        for record in self:
+            record.value2 = float(record.value) / 100
