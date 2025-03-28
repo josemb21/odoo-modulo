@@ -1,48 +1,48 @@
 <odoo>
     <data>
-        <!-- Vista de formulario -->
-        <record model="ir.ui.view" id="view_gym_session_form">
+        <!-- Vista para el formulario de las sesiones de gimnasio -->
+        <record model="ir.ui.view" id="gym_session_form_view">
             <field name="name">gym.session.form</field>
             <field name="model">gym.session</field>
             <field name="arch" type="xml">
                 <form string="Sesión de Gimnasio">
                     <sheet>
                         <group>
-                            <field name="name" string="Nombre de la sesión"/>
-                            <field name="start_time" string="Hora de inicio"/>
-                            <field name="end_time" string="Hora de fin"/>
-                            <field name="instructor_id" string="Instructor"/>
-                            <field name="capacity" string="Capacidad"/>
+                            <field name="name"/>
+                            <field name="start_time"/>
+                            <field name="end_time"/>
+                            <field name="capacity"/>
+                            <field name="instructor_id"/>
+                            <field name="description"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
-        <!-- Vista de lista -->
-        <record model="ir.ui.view" id="view_gym_session_tree">
+        <!-- Vista de lista para las sesiones de gimnasio -->
+        <record model="ir.ui.view" id="gym_session_tree_view">
             <field name="name">gym.session.tree</field>
             <field name="model">gym.session</field>
             <field name="arch" type="xml">
                 <tree string="Sesiones de Gimnasio">
-                    <field name="name" string="Nombre de la sesión"/>
-                    <field name="start_time" string="Hora de inicio"/>
-                    <field name="end_time" string="Hora de fin"/>
-                    <field name="instructor_id" string="Instructor"/>
-                    <field name="capacity" string="Capacidad"/>
+                    <field name="name"/>
+                    <field name="start_time"/>
+                    <field name="end_time"/>
+                    <field name="capacity"/>
                 </tree>
             </field>
         </record>
 
-        <!-- Acción para abrir las vistas de gimnasio -->
-        <record model="ir.actions.act_window" id="action_gym_session">
+        <!-- Acción para abrir el modelo de sesiones -->
+        <record model="ir.actions.act_window" id="gym_session_action_window">
             <field name="name">Sesiones de Gimnasio</field>
             <field name="res_model">gym.session</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-        <!-- Añadir un ítem de menú para acceder a las sesiones -->
-        <menuitem id="gym_menu" name="Gimnasio" sequence="10"/>
-        <menuitem id="gym_session_menu" name="Sesiones" parent="gym_menu" action="action_gym_session" sequence="10"/>
+        <!-- Menú de acceso -->
+        <menuitem name="Gimnasio" id="gym_menu_root"/>
+        <menuitem name="Sesiones" id="gym_menu_sessions" parent="gym_menu_root" action="gym_session_action_window"/>
     </data>
 </odoo>
