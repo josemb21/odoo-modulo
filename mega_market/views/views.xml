@@ -1,60 +1,47 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="mega_market.list">
-      <field name="name">MegaMarket list</field>
-      <field name="model">mega_market.mega_market</field>
+
+    <!-- Vistas para el modelo academy.course -->
+    
+    <!-- Vista en forma de lista (Tree View) -->
+    <record model="ir.ui.view" id="academy_course_tree">
+      <field name="name">academy.course.tree</field>
+      <field name="model">academy.course</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="instructor"/>
+          <field name="start_date"/>
         </tree>
       </field>
     </record>
--->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="mega_market.action_window">
-      <field name="name">MegaMarket window</field>
-      <field name="res_model">mega_market.mega_market</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="mega_market.action_server">
-      <field name="name">MegaMarket server</field>
-      <field name="model_id" ref="model_mega_market_mega_market"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+    <!-- Vista en forma de formulario (Form View) -->
+    <record model="ir.ui.view" id="academy_course_form">
+      <field name="name">academy.course.form</field>
+      <field name="model">academy.course</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="instructor"/>
+            <field name="start_date"/>
+            <field name="description"/>
+          </group>
+        </form>
       </field>
     </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="MegaMarket" id="mega_market.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="mega_market.menu_1" parent="mega_market.menu_root"/>
-    <menuitem name="Menu 2" id="mega_market.menu_2" parent="mega_market.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="mega_market.menu_1_list" parent="mega_market.menu_1"
-              action="mega_market.action_window"/>
-    <menuitem name="Server to list" id="mega_market" parent="mega_market.menu_2"
-              action="mega_market.action_server"/>
--->
+    <!-- Acción que abre las vistas de lista y formulario -->
+    <record model="ir.actions.act_window" id="academy_course_action">
+      <field name="name">Academy Courses</field>
+      <field name="res_model">academy.course</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú para acceder a los cursos -->
+    <menuitem name="Academy" id="academy_menu_root"/>
+    <menuitem name="Courses" id="academy_menu_courses" parent="academy_menu_root" action="academy_course_action"/>
+
   </data>
 </odoo>
