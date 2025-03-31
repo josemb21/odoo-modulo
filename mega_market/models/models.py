@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
+from odoo import models, fields
 
-# from odoo import models, fields, api
+class AcademyCourse(models.Model):
+    _name = 'academy.course'
+    _description = 'Academy Course'
 
-
-# class mega_market(models.Model):
-#     _name = 'mega_market.mega_market'
-#     _description = 'mega_market.mega_market'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
-
+    name = fields.Char('Course Name', required=True)
+    instructor = fields.Char('Instructor Name', required=True)
+    start_date = fields.Date('Start Date')
+    description = fields.Text('Description')
