@@ -1,47 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
   <data>
+    <!-- =========== Vistas y acciones para ELECTRODOMÉSTICO =========== -->
 
-    <!-- Vistas para el modelo academy.course -->
-    
-    <!-- Vista en forma de lista (Tree View) -->
-    <record model="ir.ui.view" id="academy_course_tree">
-      <field name="name">academy.course.tree</field>
-      <field name="model">academy.course</field>
+    <!-- Vista en formulario -->
+    <record model="ir.ui.view" id="view_form_electrodomestico">
+      <field name="name">electrodomestico.form</field>
+      <field name="model">mega_market.electrodomestico</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="instructor"/>
-          <field name="start_date"/>
-        </tree>
-      </field>
-    </record>
-
-    <!-- Vista en forma de formulario (Form View) -->
-    <record model="ir.ui.view" id="academy_course_form">
-      <field name="name">academy.course.form</field>
-      <field name="model">academy.course</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="name"/>
-            <field name="instructor"/>
-            <field name="start_date"/>
-            <field name="description"/>
-          </group>
+        <form string="Electrodoméstico">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="codigo_producto"/>
+              <field name="pais_id"/>
+              <field name="importe_compra"/>
+              <field name="moneda_id"/>
+              <field name="precio_venta"/>
+            </group>
+          </sheet>
         </form>
       </field>
     </record>
 
-    <!-- Acción que abre las vistas de lista y formulario -->
-    <record model="ir.actions.act_window" id="academy_course_action">
-      <field name="name">Academy Courses</field>
-      <field name="res_model">academy.course</field>
+    <!-- Vista en árbol -->
+    <record model="ir.ui.view" id="view_tree_electrodomestico">
+      <field name="name">electrodomestico.tree</field>
+      <field name="model">mega_market.electrodomestico</field>
+      <field name="arch" type="xml">
+        <tree string="Electrodomésticos">
+          <field name="name"/>
+          <field name="codigo_producto"/>
+          <field name="precio_venta"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Acción para abrir las vistas de Electrodoméstico -->
+    <record model="ir.actions.act_window" id="action_electrodomestico">
+      <field name="name">Electrodomésticos</field>
+      <field name="res_model">mega_market.electrodomestico</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Menú para acceder a los cursos -->
-    <menuitem name="Academy" id="academy_menu_root"/>
-    <menuitem name="Courses" id="academy_menu_courses" parent="academy_menu_root" action="academy_course_action"/>
+    <!-- =========== Vistas y acciones para CLIENTE =========== -->
 
+    <!-- Vista en formulario -->
+    <record model="ir.ui.view" id="view_form_cliente">
+      <field name="name">cliente.form</field>
+      <field name="model">mega_market.cliente</field>
+      <field name="arch" type="xml">
+        <form string="Cliente">
+          <sheet>
+            <group>
+              <field name="nombre"/>
+              <field name="apellidos"/>
+              <field name="nif"/>
+              <field name="direccion"/>
+              <field name="fecha_nacimiento"/>
+              <field name="telefono"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista en árbol -->
+    <record model="ir.ui.view" id="view_tree_cliente">
+      <field name="name">cliente.tree</field>
+      <field name="model">mega_market.cliente</field>
+      <field name="arch" type="xml">
+        <tree string="Clientes">
+          <field name="nombre"/>
+          <field name="apellidos"/>
+          <field name="nif"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Acción para abrir las vistas de Cliente -->
+    <record model="ir.actions.act_window" id="action_cliente">
+      <field name="name">Clientes</field>
+      <field name="res_model">mega_market.cliente</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- =========== Menús =========== -->
+
+    <!-- Menú raíz -->
+    <menuitem id="menu_mega_market_root" name="Mega Market"/>
+
+    <!-- Menú Electrodomésticos -->
+    <menuitem id="menu_mega_market_electrodomestico"
+              name="Electrodomésticos"
+              parent="menu_mega_market_root"
+              action="action_electrodomestico"/>
+
+    <!-- Menú Clientes -->
+    <menuitem id="menu_mega_market_cliente"
+              name="Clientes"
+              parent="menu_mega_market_root"
+              action="action_cliente"/>
   </data>
 </odoo>
