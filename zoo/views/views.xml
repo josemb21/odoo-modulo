@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <!-- ================== ANIMAL ================== -->
+
+    <!-- Vistas de Animal (form, tree) -->
+    <record id="view_form_animal" model="ir.ui.view">
+      <field name="name">zoo.animal.form</field>
+      <field name="model">zoo.animal</field>
+      <field name="arch" type="xml">
+        <form string="Animal">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="especie"/>
+              <field name="identificador"/>
+              <field name="pais_id"/>
+              <field name="edad"/>
+              <field name="fecha_entrada"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_animal" model="ir.ui.view">
+      <field name="name">zoo.animal.tree</field>
+      <field name="model">zoo.animal</field>
+      <field name="arch" type="xml">
+        <tree string="Animales">
+          <field name="name"/>
+          <field name="especie"/>
+          <field name="identificador"/>
+          <field name="edad"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Acción de Animal -->
+    <record id="action_animal" model="ir.actions.act_window">
+      <field name="name">Animales</field>
+      <field name="res_model">zoo.animal</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ================== CUIDADOR ================== -->
+
+    <!-- Vistas de Cuidador (form, tree) -->
+    <record id="view_form_cuidador" model="ir.ui.view">
+      <field name="name">zoo.cuidador.form</field>
+      <field name="model">zoo.cuidador</field>
+      <field name="arch" type="xml">
+        <form string="Cuidador">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="apellidos"/>
+              <field name="cargo"/>
+              <field name="fecha_incorporacion"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_cuidador" model="ir.ui.view">
+      <field name="name">zoo.cuidador.tree</field>
+      <field name="model">zoo.cuidador</field>
+      <field name="arch" type="xml">
+        <tree string="Cuidadores">
+          <field name="name"/>
+          <field name="apellidos"/>
+          <field name="cargo"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Acción de Cuidador -->
+    <record id="action_cuidador" model="ir.actions.act_window">
+      <field name="name">Cuidadores</field>
+      <field name="res_model">zoo.cuidador</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ================== ESPACIO ================== -->
+
+    <!-- Vistas de Espacio (form, tree) -->
+    <record id="view_form_espacio" model="ir.ui.view">
+      <field name="name">zoo.espacio.form</field>
+      <field name="model">zoo.espacio</field>
+      <field name="arch" type="xml">
+        <form string="Espacio">
+          <sheet>
+            <group>
+              <field name="codigo"/>
+              <field name="tipo"/>
+              <field name="area_tematica"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_espacio" model="ir.ui.view">
+      <field name="name">zoo.espacio.tree</field>
+      <field name="model">zoo.espacio</field>
+      <field name="arch" type="xml">
+        <tree string="Espacios">
+          <field name="codigo"/>
+          <field name="tipo"/>
+          <field name="area_tematica"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Acción de Espacio -->
+    <record id="action_espacio" model="ir.actions.act_window">
+      <field name="name">Espacios</field>
+      <field name="res_model">zoo.espacio</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ================== Menús ================== -->
+
+    <!-- Menú raíz "Zoo" -->
+    <menuitem id="menu_zoo_root" name="Zoo"/>
+
+    <!-- Submenú Animales -->
+    <menuitem id="menu_zoo_animal"
+              name="Animales"
+              parent="menu_zoo_root"
+              action="action_animal"/>
+
+    <!-- Submenú Cuidadores -->
+    <menuitem id="menu_zoo_cuidador"
+              name="Cuidadores"
+              parent="menu_zoo_root"
+              action="action_cuidador"/>
+
+    <!-- Submenú Espacios -->
+    <menuitem id="menu_zoo_espacio"
+              name="Espacios"
+              parent="menu_zoo_root"
+              action="action_espacio"/>
+
+  </data>
+</odoo>

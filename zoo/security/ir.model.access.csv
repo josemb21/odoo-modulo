@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id,perm_read,perm_write,perm_create,perm_unlink
+access_animal,zoo_animal,model_zoo_animal,,1,1,1,1
+access_cuidador,zoo_cuidador,model_zoo_cuidador,,1,1,1,1
+access_espacio,zoo_espacio,model_zoo_espacio,,1,1,1,1
